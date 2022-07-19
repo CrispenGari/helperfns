@@ -3,7 +3,7 @@
 In this file I'm going to explain how you can contribute to `helperfns`.
 
 <p align="center">
-   <img src="/images/logo.png" alt="logo" width="60%"/>
+   <img src="https://github.com/CrispenGari/helperfns/blob/main/images/logo.png" alt="logo" width="60%"/>
 </p>
 
 Thank you for investing your time in contributing to our project!

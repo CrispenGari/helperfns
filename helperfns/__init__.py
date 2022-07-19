@@ -1,4 +1,0 @@
-visualisation
-tables
-text
-helper
