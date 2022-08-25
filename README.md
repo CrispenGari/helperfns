@@ -28,6 +28,7 @@ The `helperfns` package is made up of different sub packages such as:
 2. text
 3. utils
 4. visualization
+5. torch
 
 ### tables
 
@@ -117,6 +118,52 @@ y_true = [random.randint(0, 1) for _ in range (100)]
 y_pred = [random.randint(0, 1) for _ in range (100)]
 classes =["dog", "cat"]
 plot_complicated_confusion_matrix(y_true, y_pred, classes)
+```
+
+### torch
+
+This is a subpackage that contains other subpackages mainly used when working with `pytorch`. These sub packages are:
+
+1. text
+2. models
+3. accuracy
+
+### `torch.text`
+
+This package contains a helper function called.
+
+### `torch.models`
+
+This package contains a helper function called `model_params`. This function is used to count the model parameters of a pytorch model. Example:
+
+```python
+model_params(my_model)
+```
+
+> Note that `my_model` is a python class model instance that is inheriting from the `nn.Module` class.
+
+### `torch.accuracy`
+
+This package contains two helper functions called that are used to calculate the accuracy between predicted labels and real label. These functions are:
+
+1. `binary_accuracy` - used to calculate the binary accuracy between predicted labels and real labels.
+
+```python
+y = y.to(device)
+predictions = model(X).squeeze(1)
+loss = criterion(predictions, y)
+acc = binary_accuracy(predictions, y)
+print(acc)
+```
+
+2. `categorical_accuracy` - used to calculate the categorical accuracy between predicted labels and real labels.
+
+```python
+y = y.to(device)
+predictions = model(X).squeeze(1)
+loss = criterion(predictions, y)
+acc = categorical_accuracy(predictions, y)
+print(acc)
 ```
 
 ### Contributing to `helperfns`.

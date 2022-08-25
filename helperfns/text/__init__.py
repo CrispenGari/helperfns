@@ -7,6 +7,10 @@ except Exception:
     nltk.download('words')
 finally:
     english_words = list(set(nltk.corpus.words.words()))
+    
+    
+    
+
 
 def de_contract(word:str)->str:
     """
