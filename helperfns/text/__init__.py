@@ -10,6 +10,68 @@ finally:
     
     
     
+def generate_bigrams(x:list)->list:
+    """
+    Generate Bi-Grams
+
+    Calculates the b-grams and appends them to the end of the tokenized list.
+
+    Parameters
+    ----------
+    x : list
+        A list of strings or a tokenized sentence.
+        
+    Returns
+    -------
+    x: list
+        A list of words with bi-grams words appended to the end of the list.
+
+    See Also
+    --------
+    generate_ngrams: calculates the n-grams and appends them to the end of the tokenized list.
+    
+    Examples
+    --------
+    >>> generate_bigrams(['This', 'film', 'is', 'terrible'])
+    ['This', 'film', 'is', 'terrible', 'is terrible', 'This film', 'film is']
+    """
+    n_grams = set(zip(*[x[i:] for i in range(2)]))
+    for n_gram in n_grams:
+        x.append(' '.join(n_gram))
+    return x
+
+def generate_ngrams(x:list, grams:int=3)->list:
+    """
+    Generate NGrams
+
+    Calculates the n-grams and appends them to the end of the tokenized list.
+
+    Parameters
+    ----------
+    x : list
+        A list of strings or a tokenized sentence
+    grams: int
+        A number specifying the number of n-grams to be generated, default is 3.
+        
+    Returns
+    -------
+    x: list
+         A list of words with n-grams words appended to the end of the list.
+
+    See Also
+    --------
+    generate_bigrams: calculates the bi-grams and appends them to the end of the tokenized list.
+    
+    Examples
+    --------
+    >>> generate_ngrams(['This', 'film', 'is', 'terrible'], grams=3)
+    ['This', 'film', 'is', 'terrible', 'film is terrible', 'This film is']
+    """
+    n_grams = set(zip(*[x[i:] for i in range(grams)]))
+    for n_gram in n_grams:
+        x.append(' '.join(n_gram))
+    return x
+
 
 
 def de_contract(word:str)->str:

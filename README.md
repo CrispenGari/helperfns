@@ -59,10 +59,10 @@ Output:
 
 ### text
 
-The text package offers two main function which are `clean_sentence` and `de_contract`
+The text package offers two main function which are `clean_sentence`, `de_contract`, `generate_ngrams` and `generate_bigrams`
 
 ```python
-from helperfns.text import clean_sentence, english_words, de_contract
+from helperfns.text import *
 
 # cleans the sentence
 print(clean_sentence("text 1 # https://url.com/bla1/blah1/"))
@@ -70,6 +70,12 @@ print(clean_sentence("text 1 # https://url.com/bla1/blah1/"))
 print(english_words)
 # converts strings like `I'm` to 'I am'
 print(de_contract("I'm"))
+
+# generate bigrams from a list of word
+print(text.generate_bigrams(['This', 'film', 'is', 'terrible']))
+
+# generates n-grams from a list of words
+print(text.generate_ngrams(['This', 'film', 'is', 'terrible']))
 ```
 
 ### utils
@@ -130,7 +136,23 @@ This is a subpackage that contains other subpackages mainly used when working wi
 
 ### `torch.text`
 
-This package contains a helper function called.
+This package contains the `label_pipeline` and `text_pipeline`. This helper function are normally used when doing text processing in python pytorch.
+
+Example:
+
+```python
+from helperfns.torch import text
+
+# converting a sentence into sequence of integer representation.
+vocab = {'<unk>': 0, 'this': 1, 'is': 2, 'a': 3, 'dog': 4}
+tokenizer = lambda x: x.split(' ')
+print(text.text_pipeline("This is a dog that is backing", tokenizer=tokenizer, vocab=vocab, unk_token='<unk>', lower=True))
+
+# converting labels into their integer representation.
+labels_dict = {l:i for (i, l) in enumerate(['af', 'en', 'st', 'ts', 'xh', 'zu'])}
+print(text.label_pipeline("en", labels_dict=labels_dict))
+
+```
 
 ### `torch.models`
 
