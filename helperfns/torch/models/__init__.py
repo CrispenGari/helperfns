@@ -28,5 +28,5 @@ def model_params(model):
     """
     n_params = sum(p.numel() for p in model.parameters())
     trainable_param = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"TOTAL MODEL PARAMETERS: \t{n_params}")
-    print(f"TOTAL TRAINABLE PARAMETERS: \t{trainable_param}")
+    print(f"TOTAL MODEL PARAMETERS: \t{n_params:,}")
+    print(f"TOTAL TRAINABLE PARAMETERS: \t{trainable_param:,}")
