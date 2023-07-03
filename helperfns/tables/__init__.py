@@ -2,7 +2,7 @@ from prettytable import PrettyTable
 
 
 def tabulate_data(column_names: list, data: list, title: str = "Table"):
-    
+
     """
     Tabulate Data
 
@@ -16,12 +16,12 @@ def tabulate_data(column_names: list, data: list, title: str = "Table"):
         Takes in a collection of correct labels.
     data : list
         The data that you want to print in table format.
-        
+
     Keyword Args
     ------------
     title : str
         The table title, the default title is "Table".
-        
+
     Returns
     -------
     None
@@ -48,9 +48,8 @@ def tabulate_data(column_names: list, data: list, title: str = "Table"):
     assert len(data) != 0, f"Data is required but got nothing."
     assert len(column_names) == len(data[0]), f"Column names and data must have the same length, but got {len(column_names)} and {len(data)}."
     assert all([len(d)== len(data[0]) for d in data]), f"The row data must have the same length."
-    
+
     table = PrettyTable(column_names)
-    table.title = title
     for i, name in enumerate(column_names):
         if(i == 0):
             table.align[name] = 'l'
@@ -58,4 +57,6 @@ def tabulate_data(column_names: list, data: list, title: str = "Table"):
             table.align[name] = 'r'
     for row in data:
         table.add_row(row)
+
+    print(title)
     print(table)
