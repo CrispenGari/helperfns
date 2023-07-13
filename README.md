@@ -105,7 +105,16 @@ This sub package provides different helper functions for visualizing data using 
 Examples:
 
 ```python
-from helperfns.visualization import plot_complicated_confusion_matrix, plot_images, plot_images_predictions, plot_simple_confusion_matrix
+from helperfns.visualization import plot_complicated_confusion_matrix, plot_images, plot_images_predictions, plot_simple_confusion_matrix,
+plot_classification_report
+
+
+# plotting classification report
+
+fig, ax = plot_classification_report(labels, preds,
+                    title='Classification Report',
+                    figsize=(10, 5), dpi=70,
+                    target_names = classes)
 
 # plot predicted image labels with the images
 plot_images_predictions(images, true_labels, preds, classes=["dog", "cat"] ,cols=8)

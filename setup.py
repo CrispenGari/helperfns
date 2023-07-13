@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.0.4'
+VERSION = "0.0.5"
 DESCRIPTION = "This package provide some python helper functions that are useful in machine learning."
 # setting up
 setup(
@@ -20,16 +20,31 @@ setup(
     long_description=long_description,
     packages=find_packages(),
     install_requires=[
-        "prettytable", "nltk", "sklearn", "matplotlib", "numpy", "torch"
+        "prettytable",
+        "nltk",
+        "sklearn",
+        "matplotlib",
+        "numpy",
+        "torch",
+        "pandas",
+        "seaborn",
     ],
-    keywords=['python', 'python3', 'helper-functions', "text cleaning", "visualization", "machine-learning"],
+    keywords=[
+        "helperfns",
+        "python",
+        "python3",
+        "helper-functions",
+        "text cleaning",
+        "visualization",
+        "machine-learning",
+    ],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Development Status :: 3 - Alpha",
         "Environment :: Console",
         "Environment :: MacOS X",
         "Environment :: MacOS X :: Carbon",
-         "Environment :: MacOS X :: Carbon",
+        "Environment :: MacOS X :: Carbon",
         "Environment :: MacOS X :: Cocoa",
         "Environment :: Web Environment",
         "Environment :: Win32 (MS Windows)",

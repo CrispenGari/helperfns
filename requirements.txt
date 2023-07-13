@@ -17,12 +17,14 @@ nltk==3.7
 numpy==1.23.1
 opencv-python==4.6.0.66
 packaging==21.3
+pandas==2.0.3
 Pillow==9.2.0
 pkginfo==1.8.3
 prettytable==3.3.0
 Pygments==2.12.0
 pyparsing==3.0.9
 python-dateutil==2.8.2
+pytz==2023.3
 pywin32-ctypes==0.2.0
 readme-renderer==35.0
 regex==2022.7.9
@@ -32,6 +34,7 @@ rfc3986==2.0.0
 rich==12.5.1
 scikit-learn==1.1.1
 scipy==1.8.1
+seaborn==0.12.2
 six==1.16.0
 sklearn==0.0
 threadpoolctl==3.1.0
@@ -39,6 +42,7 @@ torch==1.12.1
 tqdm==4.64.0
 twine==4.0.1
 typing_extensions==4.3.0
+tzdata==2023.3
 urllib3==1.26.10
 wcwidth==0.2.5
 webencodings==0.5.1
