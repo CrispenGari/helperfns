@@ -85,17 +85,31 @@ utils package comes with a simple helper function for converting seconds to hour
 Example:
 
 ```python
+from helperfns.utils import hms_string
+
 start = time.time()
 for i in range(100000):
    pass
 end = time.time()
 
+print(hms_string(end - start))
 ```
 
 Output:
 
 ```shell
 '0:00:00.01'
+```
+
+It also comes with a helper functions for normalizing an image so that it can be ploted using matplot lib:
+
+Example:
+
+```python
+from helperfns.utils import normalize_image
+
+image = normalize_image(image)
+plt.imshow(image.permute(1, 2, 0).cpu().numpy())
 ```
 
 ### visualization

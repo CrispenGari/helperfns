@@ -49,6 +49,7 @@ def plot_simple_confusion_matrix(
     plot_complicated_confusion_matrix : Plots a confusion matrix with some percentage(%) of confusion.
     plot_images: Plots the images and display them.
     plot_images_predictions: Plots the images with their predictions and display them.
+    plot_classification_report: Plots the classification report.
 
     Examples
     --------
@@ -121,6 +122,7 @@ def plot_complicated_confusion_matrix(
     plot_simple_confusion_matrix : Plots a simple confusion matrix.
     plot_images: Plots the images and display them.
     plot_images_predictions: Plots the images with their predictions and display them.
+    plot_classification_report: Plots the classification report.
 
     Examples
     --------
@@ -208,6 +210,7 @@ def plot_images(
     plot_complicated_confusion_matrix : Plots a confusion matrix with some percentage(%) of confusion.
     plot_simple_confusion_matrix : Plots a simple confusion matrix.
     plot_images_predictions: Plots the images with their predictions and display them.
+    plot_classification_report: Plots the classification report.
 
     Examples
     --------
@@ -237,7 +240,7 @@ def plot_images_predictions(
     cols: int = 5,
     rows: int = 3,
     fontsize: int = 16,
-):
+) -> None:
     """
     Plot images predictions
 
@@ -274,6 +277,7 @@ def plot_images_predictions(
     plot_complicated_confusion_matrix : Plots a confusion matrix with some percentage(%) of confusion.
     plot_simple_confusion_matrix : Plots a simple confusion matrix.
     plot_images: Plots the images and display them.
+    plot_classification_report: Plots the classification report.
 
     Examples
     --------
@@ -346,6 +350,7 @@ def plot_classification_report(
     plot_complicated_confusion_matrix : Plots a confusion matrix with some percentage(%) of confusion.
     plot_simple_confusion_matrix : Plots a simple confusion matrix.
     plot_images: Plots the images and display them.
+    plot_images_predictions: Plots the images with their predictions and display them.
 
     Examples
     --------
