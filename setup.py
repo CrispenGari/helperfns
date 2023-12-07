@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = "0.0.7"
+VERSION = "1.0.0"
 DESCRIPTION = "This package provide some python helper functions that are useful in machine learning."
 # setting up
 setup(
@@ -22,10 +22,9 @@ setup(
     install_requires=[
         "prettytable",
         "nltk",
-        "sklearn",
+        "scikit-learn",
         "matplotlib",
         "numpy",
-        "torch",
         "pandas",
         "seaborn",
     ],
