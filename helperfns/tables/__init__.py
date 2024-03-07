@@ -2,7 +2,6 @@ from prettytable import PrettyTable
 
 
 def tabulate_data(column_names: list, data: list, title: str = "Table"):
-
     """
     Tabulate Data
 
@@ -45,18 +44,25 @@ def tabulate_data(column_names: list, data: list, title: str = "Table"):
     | test       |          3 |       |
     +------------+------------+-------+
     """
-    assert len(data) != 0, f"Data is required but got nothing."
-    assert len(column_names) == len(data[0]), f"Column names and data must have the same length, but got {len(column_names)} and {len(data)}."
-    assert all([len(d)== len(data[0]) for d in data]), f"The row data must have the same length."
+    assert len(data) != 0, "Data is required but got nothing."
+    assert len(column_names) == len(
+        data[0]
+    ), f"Column names and data must have the same length, but got {len(column_names)} and {len(data)}."
+    assert all(
+        [len(d) == len(data[0]) for d in data]
+    ), "The row data must have the same length."
 
     table = PrettyTable(column_names)
     for i, name in enumerate(column_names):
-        if(i == 0):
-            table.align[name] = 'l'
+        if i == 0:
+            table.align[name] = "l"
         else:
-            table.align[name] = 'r'
+            table.align[name] = "r"
     for row in data:
         table.add_row(row)
 
     print(title)
     print(table)
+
+
+__all__ = [tabulate_data]

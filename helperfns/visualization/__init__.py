@@ -293,7 +293,7 @@ def plot_images_predictions(
     if len(classes):
         classes = classes
     else:
-        classes = list(set(label_pred))
+        classes = list(set(labels_pred))
 
     for i, (image, label_true, label_pred) in enumerate(
         zip(images, labels_true, labels_pred)
@@ -408,8 +408,17 @@ def plot_classification_report(
     plt.xticks(rotation=45)
     plt.yticks(rotation=360)
 
-    if save_fig_path != None:
+    if save_fig_path is not None:
         path = pathlib.Path(save_fig_path)
         path.parent.mkdir(parents=True, exist_ok=True)
         fig.savefig(save_fig_path)
     return fig, ax
+
+
+__all__ = [
+    plot_classification_report,
+    plot_complicated_confusion_matrix,
+    plot_simple_confusion_matrix,
+    plot_images_predictions,
+    plot_images,
+]

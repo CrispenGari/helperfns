@@ -1,10 +1,32 @@
-### helperfns
+### `helperfns`
 
 🎀 This is a python package that contains some helper functions for machine leaning.
 
 <p align="center">
-   <img src="https://github.com/CrispenGari/helperfns/blob/main/images/logo.png" alt="logo" width="60%"/>
+   <img src="https://github.com/CrispenGari/helperfns/blob/main/images/logo.png?raw=true" alt="logo" width="60%"/>
 </p>
+
+---
+
+<p align="center">
+  <a href="https://pypi.python.org/pypi/helperfns"><img src="https://badge.fury.io/py/helperfns.svg"></a>
+  <a href="https://github.com/crispengari/helperfns/actions/workflows/CI.yml"><img src="https://github.com/crispengari/helperfns/actions/workflows/CI.yml/badge.svg"></a>
+  <a href="/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green"></a>
+  <a href="https://pypi.python.org/pypi/helperfns"><img src="https://img.shields.io/pypi/pyversions/helperfns.svg"></a>
+</p>
+
+### Table of Contents
+
+- [`helperfns`](#helperfns)
+- [Table of Contents](#table-of-contents)
+- [Getting started](#getting-started)
+- [Usage](#usage)
+- [tables](#tables)
+- [text](#text)
+- [utils](#utils)
+- [visualization](#visualization)
+- [Contributing to `helperfns`.](#contributing-to-helperfns)
+- [License](#license)
 
 ### Getting started
 
@@ -99,17 +121,6 @@ Output:
 '0:00:00.01'
 ```
 
-It also comes with a helper functions for normalizing an image so that it can be ploted using matplot lib:
-
-Example:
-
-```python
-from helperfns.utils import normalize_image
-
-image = normalize_image(image)
-plt.imshow(image.permute(1, 2, 0).cpu().numpy())
-```
-
 ### visualization
 
 This sub package provides different helper functions for visualizing data using plots.
@@ -153,29 +164,4 @@ To contribute to `helperfns` read the [CONTRIBUTION.md](https://github.com/Crisp
 
 ### License
 
-In this package the `MIT` license was used which reads as follows:
-
-```
-MIT License
-
-Copyright (c) 2022 crispengari
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
+This project is licensed under the MIT License - see the [LICENSE](/LISENSE) file for details.
