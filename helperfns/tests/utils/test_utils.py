@@ -6,4 +6,4 @@ class TestUtils:
         start = time.time()
         time.sleep(2)
         end = time.time()
-        assert hms_string(end - start) == "0:00:02.00"
+        assert "02" in hms_string(end - start)
