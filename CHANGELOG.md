@@ -4,7 +4,7 @@ helperfns **`1.0.1`**
 
 ### Release Notes - `helperfns`
 
-We have release the new `helperfns` Version `2.4.0` (`2024-02-27`)
+We have release the new `helperfns` Version `1.0.1` (`2024-03-07`)
 
 ##### Features
 
