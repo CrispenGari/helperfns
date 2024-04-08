@@ -1,4 +1,16 @@
 ===
+helperfns **`1.0.2`**
+===
+
+### Release Notes - `helperfns`
+
+We have release the new `helperfns` Version `1.0.2` (`2024-04-08`)
+
+##### Features
+
+- Updated documentation.
+
+===
 helperfns **`1.0.1`**
 ===
 
