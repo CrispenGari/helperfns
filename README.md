@@ -26,6 +26,7 @@
 - [utils](#utils)
 - [visualization](#visualization)
 - [Contributing to `helperfns`.](#contributing-to-helperfns)
+- [Documentation](#documentation)
 - [License](#license)
 
 ### Getting started
@@ -298,6 +299,10 @@ This function takes in the following as arguments.
 ### Contributing to `helperfns`.
 
 To contribute to `helperfns` read the [CONTRIBUTION.md](https://github.com/CrispenGari/helperfns/blob/main/CONTRIBUTION.md) file.
+
+### Documentation
+
+You can read the full [documentation](https://helperfns.readthedocs.io/en/latest/) here.
 
 ### License
 
