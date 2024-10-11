@@ -1,6 +1,6 @@
-### `helperfns` **`1.0.3`** (2024-10-11)
+### `helperfns` **`1.2.0`** (2024-10-11)
 
-We have released a new version of `helperfns` **`1.0.3`** with the following changes:
+We have released a new version of `helperfns` **`1.2.0`** with the following changes:
 
 1. Added a new helper function `plot_wordcloud` in the `helperfns.visualization` module.
 2. Enhanced the `helperfns.visualization` module to allow saving plots.
