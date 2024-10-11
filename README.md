@@ -296,6 +296,30 @@ This function takes in the following as arguments.
 | `xlabel`   | Label for x-axis (default: "Predicted label")   | `str`   |
 | `ylabel`   | Label for y-axis (default: "True label")        | `str`   |
 
+The `plot_wordcloud` function generates and plots a word cloud based on the provided corpus.
+
+```python
+# Generate a word cloud from a sample text
+corpus = "This is a sample text for generating word clouds"
+plot_wordcloud(corpus, max_words=500, mask="wine")
+
+```
+
+This function takes in the following as arguments.
+
+| Argument           | Description                                                                                                           | Type                                                               |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `corpus`           | The text or dictionary of word frequencies to generate the word cloud from.                                           | `str` or `dict`                                                    |
+| `max_words`        | Maximum number of words to include in the word cloud, default is 1,000.                                               | `int`                                                              |
+| `title`            | Title of the plot, default is "Word Cloud".                                                                           | `str`                                                              |
+| `mask`             | The shape mask for the word cloud. Options are "head", "chicken", "wine", "apple", "tree" or None, default is "tree". | `Union[Literal["head", "chicken", "wine", "apple", "tree"], None]` |
+| `background_color` | The background color of the word cloud, default is "#E4E0E1".                                                         | `str`                                                              |
+| `contour_width`    | Width of the contour around the word cloud, default is 1.                                                             | `int`                                                              |
+| `contour_color`    | Color of the contour around the word cloud, default is "#D6C0B3".                                                     | `str`                                                              |
+| `figsize`          | The figure size of the word cloud plot, default is (10, 10).                                                          | `tuple`                                                            |
+| `fontsize`         | Font size for the plot title, default is 15.                                                                          | `int`                                                              |
+| `save_path`        | The path to save the plotted figure (default: None).                                                                  | `str` or `None`                                                    |
+
 ### Contributing to `helperfns`.
 
 To contribute to `helperfns` read the [CONTRIBUTION.md](https://github.com/CrispenGari/helperfns/blob/main/CONTRIBUTION.md) file.

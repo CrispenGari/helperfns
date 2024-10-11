@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "helperfns"
-version = "1.0.2"
+version = "1.0.3"
 authors = [
     {name = "Crispen Gari", email = "crispengari@gmail.com"},
 ]
@@ -20,6 +20,7 @@ dependencies  =[
     "numpy",
     "pandas",
     "seaborn",
+    "wordcloud"
 ]
 keywords = [
     "helperfns",

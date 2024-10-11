@@ -1,15 +1,19 @@
+import os
 import matplotlib.pyplot as plt
 import itertools
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import wordcloud as wc
+import pathlib
+import matplotlib as mpl
 from sklearn.metrics import (
     confusion_matrix,
     ConfusionMatrixDisplay,
     classification_report,
 )
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import pathlib
-import matplotlib as mpl
+from PIL import Image
+from typing import Union, Literal
 
 
 def plot_simple_confusion_matrix(
@@ -18,6 +22,7 @@ def plot_simple_confusion_matrix(
     classes: list = [],
     figsize: tuple = (10, 10),
     fontsize: int = 15,
+    save_path: str | None = None,
 ):
     """
     Plot Complicated Confusion Matrix
@@ -39,6 +44,10 @@ def plot_simple_confusion_matrix(
         The figsize of the confusion matrix plot default is (10, 10);
     fontsize : int
         Font size for the contents of the confusion matrix, default is 15.
+    save_path : str | None
+        The path to save the plot, default is None.
+    save_path : str | None, defaut=None
+        Full path where to save the plot. Will generate the folders if they don't exist already.
 
     Returns
     -------
@@ -46,6 +55,7 @@ def plot_simple_confusion_matrix(
 
     See Also
     --------
+    plot_wordcloud: Plots a word cloud from text or word frequencies.
     plot_complicated_confusion_matrix : Plots a confusion matrix with some percentage(%) of confusion.
     plot_images: Plots the images and display them.
     plot_images_predictions: Plots the images with their predictions and display them.
@@ -58,8 +68,8 @@ def plot_simple_confusion_matrix(
     >>> classes =["dog", "cat"]
     >>> plot_complicated_confusion_matrix(y_true, y_pred, classes)
     """
-    assert len(y_true) == len(
-        y_pred
+    assert (
+        len(y_true) == len(y_pred)
     ), f"The length of predicted and real labels must be equal, received {len(y_pred)} and {len(y_true)}."
 
     fig = plt.figure(figsize=figsize)
@@ -71,6 +81,9 @@ def plot_simple_confusion_matrix(
 
     cm = ConfusionMatrixDisplay(cm, display_labels=classes)
     cm.plot(values_format="d", cmap="Blues", ax=ax)
+
+    if save_path is not None:
+        plt.savefig(save_path)
     plt.xticks(rotation=20, color="black", fontsize=fontsize)
     plt.yticks(rotation=20, color="black", fontsize=fontsize)
     plt.show()
@@ -85,6 +98,7 @@ def plot_complicated_confusion_matrix(
     title: str = "Confusion Matrix",
     xlabel: str = "Predicted label",
     ylabel: str = "True label",
+    save_path: str | None = None,
 ):
     """
     Plot Complicated Confusion Matrix
@@ -112,6 +126,8 @@ def plot_complicated_confusion_matrix(
         The y-axis label, default is 'Predicted label'.
     fontsize : int
         Font size for the contents of the confusion matrix, default is 20.
+    save_path : str | None, defaut=None
+        Full path where to save the plot. Will generate the folders if they don't exist already.
 
     Returns
     -------
@@ -123,6 +139,7 @@ def plot_complicated_confusion_matrix(
     plot_images: Plots the images and display them.
     plot_images_predictions: Plots the images with their predictions and display them.
     plot_classification_report: Plots the classification report.
+    plot_wordcloud: Plots a word cloud from text or word frequencies.
 
     Examples
     --------
@@ -132,8 +149,8 @@ def plot_complicated_confusion_matrix(
     >>> plot_simple_confusion_matrix(y_true, y_pred, classes)
     """
 
-    assert len(y_true) == len(
-        y_pred
+    assert (
+        len(y_true) == len(y_pred)
     ), f"The length of predicted and real labels must be equal, received {len(y_pred)} and {len(y_true)}."
     cm = confusion_matrix(y_true, y_pred)
     cm_norm = cm.astype("float") / cm.sum(axis=1)[:, np.newaxis]
@@ -174,11 +191,18 @@ def plot_complicated_confusion_matrix(
             color="white" if cm[i, j] > threshold else "black",
             size=fontsize,
         )
+    if save_path is not None:
+        plt.savefig(save_path)
     plt.show()
 
 
 def plot_images(
-    images: list, labels: list, cols: int = 5, rows: int = 3, fontsize: int = 16
+    images: list,
+    labels: list,
+    cols: int = 5,
+    rows: int = 3,
+    fontsize: int = 16,
+    save_path: str | None = None,
 ) -> None:
     """
     Plot images
@@ -200,6 +224,8 @@ def plot_images(
         Number of rows for images, default is 3
     fontsize : int
         Font size for labels, default is 16.
+    save_path : str | None, defaut=None
+        Full path where to save the plot. Will generate the folders if they don't exist already.
 
     Returns
     -------
@@ -211,14 +237,15 @@ def plot_images(
     plot_simple_confusion_matrix : Plots a simple confusion matrix.
     plot_images_predictions: Plots the images with their predictions and display them.
     plot_classification_report: Plots the classification report.
+    plot_wordcloud: Plots a word cloud from text or word frequencies.
 
     Examples
     --------
     >>> plot_images(images[:24], true_labels[:24], cols=8)
     """
 
-    assert len(images) == len(
-        labels
+    assert (
+        len(images) == len(labels)
     ), f"The length for images and labels must match but got {len(images)} {len(labels)}"
 
     fig = plt.figure()
@@ -229,6 +256,10 @@ def plot_images(
         plt.imshow(image, cmap="gray")
         plt.title(label, color="g", fontsize=fontsize)
 
+    if save_path is not None:
+        path = pathlib.Path(save_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(save_path)
     plt.show()
 
 
@@ -240,6 +271,7 @@ def plot_images_predictions(
     cols: int = 5,
     rows: int = 3,
     fontsize: int = 16,
+    save_path: str | None = None,
 ) -> None:
     """
     Plot images predictions
@@ -267,6 +299,8 @@ def plot_images_predictions(
         Number of rows for images, default is 3
     fontsize : int
         Font size for labels, default is 16.
+    save_path : str | None, defaut=None
+        Full path where to save the plot. Will generate the folders if they don't exist already.
 
     Returns
     -------
@@ -278,6 +312,7 @@ def plot_images_predictions(
     plot_simple_confusion_matrix : Plots a simple confusion matrix.
     plot_images: Plots the images and display them.
     plot_classification_report: Plots the classification report.
+    plot_wordcloud: Plots a word cloud from text or word frequencies.
 
     Examples
     --------
@@ -307,6 +342,10 @@ def plot_images_predictions(
             fontsize=fontsize,
         )
 
+    if save_path is not None:
+        path = pathlib.Path(save_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(save_path)
     plt.show()
 
 
@@ -316,7 +355,7 @@ def plot_classification_report(
     title: str = "Classification Report",
     figsize: tuple = (10, 5),
     dpi: int = 70,
-    save_fig_path=None,
+    save_path: str | None = None,
     **kwargs,
 ):
     """
@@ -334,7 +373,7 @@ def plot_classification_report(
         Size (inches) of the plot.
     dpi : int, default = 70
         Image DPI.
-    save_fig_path : str, defaut=None
+    save_path : str | None, defaut=None
         Full path where to save the plot. Will generate the folders if they don't exist already.
     **kwargs : attributes of classification_report class of sklearn
 
@@ -351,6 +390,7 @@ def plot_classification_report(
     plot_simple_confusion_matrix : Plots a simple confusion matrix.
     plot_images: Plots the images and display them.
     plot_images_predictions: Plots the images with their predictions and display them.
+    plot_wordcloud: Plots a word cloud from text or word frequencies.
 
     Examples
     --------
@@ -372,7 +412,7 @@ def plot_classification_report(
     df.sort_values(by=["support"], inplace=True)
 
     # first, let's plot the heatmap by masking the 'support' column
-    rows, cols = df.shape
+    _rows, cols = df.shape
     mask = np.zeros(df.shape)
     mask[:, cols - 1] = True
     ax = sns.heatmap(
@@ -408,11 +448,129 @@ def plot_classification_report(
     plt.xticks(rotation=45)
     plt.yticks(rotation=360)
 
-    if save_fig_path is not None:
-        path = pathlib.Path(save_fig_path)
+    if save_path is not None:
+        path = pathlib.Path(save_path)
         path.parent.mkdir(parents=True, exist_ok=True)
-        fig.savefig(save_fig_path)
+        fig.savefig(save_path)
     return fig, ax
+
+
+def plot_wordcloud(
+    corpus: str | dict,
+    max_words: int = 1_000,
+    title: str = "Word Cloud",
+    mask: Union[Literal["head", "chicken", "wine", "apple", "tree"], None] = "tree",
+    background_color: str = "#E4E0E1",
+    contour_width: int = 1,
+    contour_color: str = "#D6C0B3",
+    figsize: tuple = (10, 10),
+    fontsize: int = 15,
+    save_path: str | None = None,
+) -> None:
+    """
+    Plot Word Cloud
+
+    This function generates and plots a word cloud based on the provided corpus.
+    It allows the use of different masks (shapes), word limits, and customizable
+    colors and appearance.
+
+    Parameters
+    ----------
+    corpus : str | dict
+        The text or dictionary of word frequencies to generate the word cloud from.
+    max_words : int, optional
+        Maximum number of words to include in the word cloud, default is 1,000.
+    title : str, optional
+        Title of the plot, default is "Word Cloud".
+    mask : Literal["head", "chicken", "wine"] | None, optional
+        The shape mask for the word cloud. Options are "head", "chicken", "wine", "apple", "tee" or None,
+        default is "tree".
+    background_color : str, optional
+        The background color of the word cloud, default is "#E4E0E1".
+    contour_width : int, optional
+        Width of the contour around the word cloud, default is 1.
+    contour_color : str, optional
+        Color of the contour around the word cloud, default is "#D6C0B3".
+    figsize : tuple, optional
+        The figure size of the word cloud plot, default is (10, 10).
+    fontsize : int, optional
+        Font size for the plot title, default is 15.
+    save_path : str | None, optional
+        Path to save the plot image. If None, the plot is not saved, default is None.
+
+    Returns
+    -------
+    None
+
+    See Also
+    --------
+    plot_complicated_confusion_matrix : Plots a confusion matrix with some percentage(%) of confusion.
+    plot_images: Plots the images and display them.
+    plot_images_predictions: Plots the images with their predictions and display them.
+    plot_classification_report: Plots the classification report.
+    plot_simple_confusion_matrix : Plots a simple confusion matrix.
+
+    Examples
+    --------
+    >>> corpus = "This is a sample text for generating word clouds"
+    >>> plot_wordcloud(corpus, max_words=500, mask="wine")
+    """
+
+    assert isinstance(corpus, dict) or isinstance(
+        corpus, str
+    ), "The corpus can be either a string or a dictionary of words."
+    assert mask in [
+        "head",
+        "chicken",
+        "wine",
+        "apple",
+        "tree",
+    ], "The mask can be either 'head', 'chicken', 'wine', 'apple', 'tree'."
+
+    mask = Image.open(f"{os.getcwd()}/helperfns/images/{mask}.png")
+    n_dim = len(np.array(mask).shape)
+    mask = (
+        np.array(mask).astype(np.int32)
+        if n_dim == 2
+        else np.array(mask.convert("L")).astype(np.int32)
+    )
+
+    for i in range(len(mask)):
+        mask[i] = list(map(lambda x: 255 if x == 0 else x, mask[i]))
+
+    image = (
+        wc.WordCloud(
+            background_color=background_color,
+            max_words=max_words,
+            mask=mask,
+            width=800,
+            height=800,
+            contour_width=contour_width,
+            contour_color=contour_color,
+        ).generate_from_frequencies(corpus)
+        if isinstance(corpus, dict)
+        else wc.WordCloud(
+            background_color=background_color,
+            max_words=max_words,
+            mask=mask,
+            width=800,
+            height=800,
+            contour_width=contour_width,
+            contour_color=contour_color,
+        ).generate_from_text(corpus)
+    )
+
+    plt.figure(figsize=figsize)
+    plt.title(title, color="k", fontsize=fontsize)
+    plt.imshow(image)
+    plt.axis("off")
+
+    if save_path is not None:
+        path = pathlib.Path(save_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(save_path)
+
+    plt.show()
 
 
 __all__ = [
@@ -421,4 +579,5 @@ __all__ = [
     plot_simple_confusion_matrix,
     plot_images_predictions,
     plot_images,
+    plot_wordcloud,
 ]
