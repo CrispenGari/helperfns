@@ -4,16 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "helperfns"
-version = "1.2.0"
+version = "1.2.1-alpha"
 authors = [
     {name = "Crispen Gari", email = "crispengari@gmail.com"},
 ]
-description = "This package provide some python helper functions that are useful in machine learning."
+description = "This package provides some Python helper functions that are useful in machine learning."
 readme = "README.md"
 license = {file = "LICENSE"}
 requires-python = ">=3.10"
-dependencies  =[
-   "prettytable",
+dependencies  = [
+    "prettytable",
     "nltk",
     "scikit-learn",
     "matplotlib",
@@ -33,18 +33,13 @@ keywords = [
 ]
 classifiers = [
     'Development Status :: 5 - Production/Stable',
-    'Development Status :: 6 - Mature',
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3.12",
     "Operating System :: Unix",
     "Operating System :: MacOS :: MacOS X",
     "Operating System :: Microsoft :: Windows",
-    "Operating System :: Unix",
-    "Operating System :: MacOS :: MacOS X",
-    "Operating System :: Microsoft :: Windows",
     'Natural Language :: English'
 ]
-
 
 [project.urls]
 homepage = "https://github.com/CrispenGari/helperfns"
@@ -53,9 +48,11 @@ documentation = "https://github.com/CrispenGari/helperfns/blob/main/README.md"
 changelog = "https://github.com/CrispenGari/helperfns/blob/main/CHANGELOG.md"
 issues = "https://github.com/CrispenGari/helperfns/issues"
 
-
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["helperfns"]
-exclude = ["helperfns.tests*", 'images', 'tests*', 'helperfns/tests', "tests"]  
+include = ["helperfns", "helperfns/static/**"]
+exclude = ["helperfns/tests*", "tests*", "images", "tests"]
 namespaces = false
+
+[tool.setuptools]
+include-package-data = true

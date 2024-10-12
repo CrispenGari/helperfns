@@ -16,6 +16,10 @@ from PIL import Image
 from typing import Union, Literal
 
 
+
+this = os.path.dirname(__file__)
+
+
 def plot_simple_confusion_matrix(
     y_true: list,
     y_pred: list,
@@ -527,7 +531,7 @@ def plot_wordcloud(
         "tree",
     ], "The mask can be either 'head', 'chicken', 'wine', 'apple', 'tree'."
 
-    mask = Image.open(f"{os.getcwd()}/helperfns/images/{mask}.png")
+    mask = Image.open(f"{this}/../static/images/{mask}.png")
     n_dim = len(np.array(mask).shape)
     mask = (
         np.array(mask).astype(np.int32)
